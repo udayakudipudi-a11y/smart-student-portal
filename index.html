@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Student Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= LOGIN SCREEN ================= -->
+
+<div id="loginScreen" class="login-page">
+
+    <div class="login-box">
+
+        <div class="login-icon">🎓</div>
+
+        <h1>Smart Student Portal</h1>
+
+        <p class="login-subtitle">
+            AI-Assisted Student Academic Management System
+        </p>
+
+        <form id="loginForm">
+
+            <label for="username">Student ID / Email</label>
+
+            <input
+                type="text"
+                id="username"
+                placeholder="Enter your student ID"
+                required
+            >
+
+            <label for="password">Password</label>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter your password"
+                required
+            >
+
+            <div class="login-options">
+
+                <label class="remember">
+                    <input type="checkbox">
+                    Remember me
+                </label>
+
+                <a href="#" onclick="forgotPassword(event)">
+                    Forgot Password?
+                </a>
+
+            </div>
+
+            <button type="submit" class="login-button">
+                Login
+            </button>
+
+            <p id="loginMessage"></p>
+
+        </form>
+
+        <div class="demo-login">
+            <strong>Demo Login</strong>
+            <p>Student ID: <b>student</b></p>
+            <p>Password: <b>1234</b></p>
+        </div>
+
+        <div class="login-footer">
+            Smart Student Portal • Academic Project
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= PORTAL ================= -->
+
+<div id="portal" class="portal hidden">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            🎓
+            <span>Smart Portal</span>
+        </div>
+
+        <nav>
+
+            <button class="nav-btn active"
+                onclick="showPage('dashboard', this)">
+                🏠 Dashboard
+            </button>
+
+            <button class="nav-btn"
+                onclick="showPage('subjects', this)">
+                📚 Subjects
+            </button>
+
+            <button class="nav-btn"
+                onclick="showPage('attendance', this)">
+                📊 Attendance
+            </button>
+
+            <button class="nav-btn"
+                onclick="showPage('assignments', this)">
+                📝 Assignments
+            </button>
+
+            <button class="nav-btn"
+                onclick="showPage('exams', this)">
+                📅 Exams
+            </button>
+
+            <button class="nav-btn"
+                onclick="showPage('assistant', this)">
+                🤖 AI Assistant
+            </button>
+
+            <button class="nav-btn"
+                onclick="showPage('profile', this)">
+                👤 Profile
+            </button>
+
+        </nav>
+
+        <button class="logout-btn" onclick="logoutUser()">
+            🚪 Logout
+        </button>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+        <!-- HEADER -->
+
+        <header class="top-header">
+
+            <div>
+                <h1>Smart Student Portal</h1>
+
+                <p>
+                    AI-Assisted Student Academic Management System
+                </p>
+            </div>
+
+            <div class="student-name">
+                👤 Student
+            </div>
+
+        </header>
+
+
+        <!-- ================= DASHBOARD ================= -->
+
+        <section id="dashboard" class="page active-page">
+
+            <h2>Dashboard</h2>
+
+            <p class="page-description">
+                Welcome back! Here's your academic overview.
+            </p>
+
+            <div class="dashboard-cards">
+
+                <div class="dashboard-card">
+                    <div class="card-icon">🎓</div>
+
+                    <div>
+                        <h3>CGPA</h3>
+                        <p class="big-number">8.6</p>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="card-icon">📊</div>
+
+                    <div>
+                        <h3>Attendance</h3>
+                        <p class="big-number">82%</p>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="card-icon">📝</div>
+
+                    <div>
+                        <h3>Assignments</h3>
+                        <p class="big-number">7/10</p>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="card-icon">📅</div>
+
+                    <div>
+                        <h3>Next Exam</h3>
+                        <p class="big-number">12 Days</p>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="content-card">
+
+                <h3>Upcoming Tasks</h3>
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Task</th>
+                            <th>Subject</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>DBMS Assignment</td>
+                            <td>DBMS</td>
+                            <td>10 Oct</td>
+                            <td>
+                                <span class="badge pending">
+                                    Pending
+                                </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Digital Electronics Quiz</td>
+                            <td>Digital Electronics</td>
+                            <td>12 Oct</td>
+                            <td>
+                                <span class="badge upcoming">
+                                    Upcoming
+                                </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Python Lab</td>
+                            <td>Python</td>
+                            <td>15 Oct</td>
+                            <td>
+                                <span class="badge upcoming">
+                                    Upcoming
+                                </span>
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SUBJECTS ================= -->
+
+        <section id="subjects" class="page">
+
+            <h2>Subjects</h2>
+
+            <p class="page-description">
+                Your current semester subjects.
+            </p>
+
+            <div class="content-card">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Code</th>
+                            <th>Faculty</th>
+                            <th>Credits</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Database Management Systems</td>
+                            <td>DBMS</td>
+                            <td>Dr. Sharma</td>
+                            <td>4</td>
+                        </tr>
+
+                        <tr>
+                            <td>Digital Electronics</td>
+                            <td>DE</td>
+                            <td>Prof. Patel</td>
+                            <td>4</td>
+                        </tr>
+
+                        <tr>
+                            <td>Python Programming</td>
+                            <td>PY</td>
+                            <td>Prof. Mehta</td>
+                            <td>4</td>
+                        </tr>
+
+                        <tr>
+                            <td>Data Structures</td>
+                            <td>DS</td>
+                            <td>Dr. Shah</td>
+                            <td>4</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= ATTENDANCE ================= -->
+
+        <section id="attendance" class="page">
+
+            <h2>Attendance</h2>
+
+            <p class="page-description">
+                Monitor your subject-wise attendance.
+            </p>
+
+            <div class="content-card">
+
+                <div class="attendance-item">
+
+                    <div class="attendance-header">
+                        <span>DBMS</span>
+                        <strong>88%</strong>
+                    </div>
+
+                    <div class="progress">
+                        <div class="progress-bar" style="width:88%"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="attendance-item">
+
+                    <div class="attendance-header">
+                        <span>Digital Electronics</span>
+                        <strong>82%</strong>
+                    </div>
+
+                    <div class="progress">
+                        <div class="progress-bar" style="width:82%"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="attendance-item">
+
+                    <div class="attendance-header">
+                        <span>Python</span>
+                        <strong>78%</strong>
+                    </div>
+
+                    <div class="progress">
+                        <div class="progress-bar" style="width:78%"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="attendance-item">
+
+                    <div class="attendance-header">
+                        <span>Data Structures</span>
+                        <strong>81%</strong>
+                    </div>
+
+                    <div class="progress">
+                        <div class="progress-bar" style="width:81%"></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= ASSIGNMENTS ================= -->
+
+        <section id="assignments" class="page">
+
+            <h2>Assignments</h2>
+
+            <p class="page-description">
+                Track your assignments and submission status.
+            </p>
+
+            <div class="content-card">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Assignment</th>
+                            <th>Subject</th>
+                            <th>Due Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Normalization Worksheet</td>
+                            <td>DBMS</td>
+                            <td>10 Oct</td>
+                            <td>
+                                <span class="badge pending">
+                                    Pending
+                                </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Logic Gates Design</td>
+                            <td>Digital Electronics</td>
+                            <td>12 Oct</td>
+                            <td>
+                                <span class="badge completed">
+                                    Completed
+                                </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Python Mini Project</td>
+                            <td>Python</td>
+                            <td>15 Oct</td>
+                            <td>
+                                <span class="badge pending">
+                                    Pending
+                                </span>
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= EXAMS ================= -->
+
+        <section id="exams" class="page">
+
+            <h2>Exam Schedule</h2>
+
+            <p class="page-description">
+                Upcoming examination schedule.
+            </p>
+
+            <div class="exam-grid">
+
+                <div class="exam-card">
+
+                    <h3>Database Management Systems</h3>
+
+                    <p>📅 20 October 2026</p>
+                    <p>⏰ 10:00 AM</p>
+
+                    <span class="badge upcoming">
+                        Upcoming
+                    </span>
+
+                </div>
+
+
+                <div class="exam-card">
+
+                    <h3>Digital Electronics</h3>
+
+                    <p>📅 23 October 2026</p>
+                    <p>⏰ 10:00 AM</p>
+
+                    <span class="badge upcoming">
+                        Upcoming
+                    </span>
+
+                </div>
+
+
+                <div class="exam-card">
+
+                    <h3>Python Programming</h3>
+
+                    <p>📅 27 October 2026</p>
+                    <p>⏰ 10:00 AM</p>
+
+                    <span class="badge upcoming">
+                        Upcoming
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= AI ASSISTANT ================= -->
+
+        <section id="assistant" class="page">
+
+            <h2>AI Study Assistant</h2>
+
+            <p class="page-description">
+                Get simple study help for your academic topics.
+            </p>
+
+            <div class="assistant-card">
+
+                <label for="topic">
+                    Enter your topic
+                </label>
+
+                <input
+                    type="text"
+                    id="topic"
+                    placeholder="Example: Normalization"
+                >
+
+
+                <label for="helpType">
+                    What do you need?
+                </label>
+
+                <select id="helpType">
+
+                    <option value="explain">
+                        Explain the topic
+                    </option>
+
+                    <option value="revision">
+                        Create revision plan
+                    </option>
+
+                    <option value="questions">
+                        Generate practice questions
+                    </option>
+
+                </select>
+
+
+                <button onclick="generateResponse()">
+                    Generate Help
+                </button>
+
+
+                <div id="aiResult" class="ai-result">
+
+                    Your study assistance will appear here.
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= PROFILE ================= -->
+
+        <section id="profile" class="page">
+
+            <h2>Student Profile</h2>
+
+            <p class="page-description">
+                Your basic academic information.
+            </p>
+
+            <div class="profile-card">
+
+                <div class="profile-avatar">
+                    👤
+                </div>
+
+                <h3>Student</h3>
+
+                <p>
+                    <strong>Student ID:</strong> STU2026
+                </p>
+
+                <p>
+                    <strong>Program:</strong>
+                    B.Tech Computer Science Engineering
+                </p>
+
+                <p>
+                    <strong>Semester:</strong> 3
+                </p>
+
+                <p>
+                    <strong>CGPA:</strong> 8.6
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
